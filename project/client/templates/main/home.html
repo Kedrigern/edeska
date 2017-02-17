@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="body-content">
+  <div class="row">
+    <div class="col-md-8">
+      {% for post in posts %}
+      <h2>{{post.web_title}}</h2>
+      <p>
+      {% autoescape false %}
+      {{post.content_html}}
+      {% endautoescape %}
+      </p>
+      <p><a href="{{url_for('main.post', id=post.id)}}">Více</a></p>
+      <hr>
+      {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+      <h3>O stránce</h3>
+      <p>Slouží k internímu informování v rámci Pirátské strany.</p>
+
+      <h3>Filtrování</h3>
+      Priorita: <select><option>Vše</option><option>Jen vysoká</option><option>Střední</option><option>Nízká</option></select><br />
+      Typ: <select><option>Veřejná zakázka</option><option>Hlasování</option><option>Legislativa</option></select><br />
+      Region: <select><option>Vše</option><option>Praha</option><option>Střední čechy</option></select><br />
+      Ogán: <select><option>Vše</option><option>RP</option><option>RV</option></select><br />
+
+      <h3>Kam dál?</h3>
+      <ul>
+        <li>Úkolovník</li>
+        <li>Podatelna</li>
+        <li>Forum</li>
+        <li>Sociální sítě</li>
+      </ul>
+
+      <h3>API</h3>
+      <h4>Atom</h4>
+      <p>TODO: doc</p>
+      <h4>REST</h4>
+      <p>TODO: doc</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

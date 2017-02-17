@@ -1,0 +1,39 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="body-content">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nadpis</th>
+            <th>Vytvořeno</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+          <tr>
+            <td>{{ post.id }}</td>
+            <td><a href="{{url_for('admin.edit', id=post.id)}}">{{post.web_title}}</a></td>
+            <td>{{ post.created_at }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-4">
+      <h3>Filtrování</h3>
+      Priorita: <select><option>Vše</option><option>Jen vysoká</option><option>Střední</option><option>Nízká</option></select><br />
+      Typ: <select><option>Veřejná zakázka</option><option>Hlasování</option><option>Legislativa</option></select><br />
+      Region: <select><option>Vše</option><option>Praha</option><option>Střední čechy</option></select><br />
+      Ogán: <select><option>Vše</option><option>RP</option><option>RV</option></select><br />
+    </div>
+  </div>
+</div>
+
+{% endblock %}

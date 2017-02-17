@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block js %}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block content %}
+
+{% from "formhelpers.html" import render_field %}
+<form method=post action="/register">
+  <dl>
+    {{ render_field(form.web_title) }}
+    {{ render_field(form.twitter_title) }}
+    {{ render_field(form.content_md) }}
+
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+
+{% endblock %}
